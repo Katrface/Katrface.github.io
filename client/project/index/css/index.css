@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    background: #091921;
+}
+
+.row{
+    height: 100vh;
+}
+
+.modal-content {
+    font-family: Arial, sans-serif;
+    color: #091921;
+}
+
+@media (max-width: 768px){
+    .menu {
+        margin-bottom: 50px;
+    }
+}
