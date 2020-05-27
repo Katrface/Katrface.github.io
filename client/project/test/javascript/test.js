@@ -81,7 +81,6 @@ function getResult() {
 
 function drawAnswers() {
     htmlAnswers = document.querySelectorAll('.form-check-input');
-
     for (i = 0; i < htmlAnswers.length; i++){
         if(htmlAnswers[i].value === "true"){
             htmlAnswers[i].parentElement.parentElement.classList.add("alert-success");

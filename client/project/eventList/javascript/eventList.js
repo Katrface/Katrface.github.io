@@ -2,39 +2,46 @@ const loc = localStorage;
 
 vueList = new Vue({
     el: '#list',
-    data:{
-
+    data: {
         title: "",
         filter: "all",
-
         eventList: []
     },
     computed: {
-        filteredList(){
-            if (this.filter === "all"){
+        filteredList() {
+            if (this.filter === "all") {
                 return this.eventList;
             }
-            if (this.filter === "completed"){
+            if (this.filter === "completed") {
                 return this.eventList.filter(t => t.completed);
             }
-            if (this.filter === "not-completed"){
+            if (this.filter === "not-completed") {
                 return this.eventList.filter(t => !t.completed);
             }
         }
     },
     methods: {
-        removeEvent(event){
+        removeEvent(event) {
             this.eventList = this.eventList.filter(t => t !== event);
             this.save();
-
         },
 
-        addEvent(event){
-            this.eventList.push(event);
+        addEvent(event) {
+            this.eventList.push(event)
         },
 
-        onSubmit(){
-            if(this.title.trim()) {
+        change(event) {
+            event.completed = !event.completed;
+            this.save();
+            setTimeout(() => {
+                if (this.filter !== "all") {
+                    document.activeElement.checked = !event.completed;
+                }
+            }, 1);
+        },
+
+        onSubmit() {
+            if (this.title.trim()) {
                 newEvent = {
                     title: this.title,
                     completed: false
@@ -45,12 +52,12 @@ vueList = new Vue({
             }
         },
 
-        save(){
+        save() {
             localStorage.clear();
             stri = JSON.stringify(this.eventList);
             localStorage.setItem("events", stri);
         },
-        load(){
+        load() {
             eventList = JSON.parse(localStorage.getItem("events"));
             eventList = eventList ? eventList : [];
             this.eventList = eventList;

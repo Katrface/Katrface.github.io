@@ -9,12 +9,12 @@ body {
     color: #091921 !important;
 }
 
-header {
+header, footer {
     height: 100px;
 }
 
-footer {
-    height: 100px;
+ul {
+    list-style-type: none;
 }
 
 .title{
@@ -28,10 +28,6 @@ footer {
     background: white;
     box-shadow: 0 0 20px #fff;
     padding-bottom: 50px;
-}
-
-ul {
-    list-style-type: none;
 }
 
 .card{
