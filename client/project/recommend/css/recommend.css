@@ -10,8 +10,7 @@ body {
 }
 
 header {
-    background: url(../img/background.jpg) no-repeat center top / cover;
-    height: 330px;
+    height: 100px;
 }
 
 footer {
@@ -33,11 +32,6 @@ footer {
 
 ul {
     list-style-type: none;
-}
-
-.form-check-input {
-    position: relative;
-    top: 2px;
 }
 
 .card{

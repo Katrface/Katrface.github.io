@@ -10,8 +10,7 @@ body {
 }
 
 header {
-    background: url(../img/background.jpg) no-repeat center top / cover;
-    height: 330px;
+    height: 100px;
 }
 
 footer {
@@ -19,7 +18,7 @@ footer {
 }
 
 .title{
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     padding-top: 40px;
     padding-bottom: 30px;
@@ -35,11 +34,36 @@ ul {
     list-style-type: none;
 }
 
+.card{
+    margin-top: 30px !important;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
 .form-check-input {
     position: relative;
     top: 2px;
 }
 
-.card{
-    margin-bottom: 30px !important;
+.rm {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+#sub {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+select {
+    margin-top: 30px;
 }

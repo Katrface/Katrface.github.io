@@ -15,46 +15,58 @@
 
 <section class="container">
     <div class="row justify-content-center">
-
-        <div class="title col-12">
-            Рекомендательная система для выбора часов
-        </div>
-
-        <!--Form-->
+        <div class="title col-12">Тест на знание курса тайм менеджмента</div>
         <div class="watch-form col-10">
             <ul>
-                <!--Вопрос-->
                 <li v-for="(question, i) in questions" class = "card mb-3">
                     <div class="card-body">
                         <h5 class="card-title">{{ question.text }}</h5>
-
-                        <!--Если открытый вопрос то поле для ввода-->
-                        <div v-if="question.isOpen">
-                            <input type="text" class="form-control answers">
-                        </div>
-
-                        <!--Иначе(закрытый), то поля выбора-->
-                        <ul v-else class="answers">
+                        <ul class="answers">
                             <li v-for="answer in question.answers">
                                 <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" v-bind:name="'answer' + i.toString()" value="{{ answer }}" v-model="chosenAnswer">
+                                    <label class="form-check-label col-12">
+                                        <input v-if="question.answer === answer" class="form-check-input" type="radio" v-bind:name="'answer' + i.toString()"
+                                               value= "true">
+                                        <input v-else class="form-check-input" type="radio" v-bind:name="'answer' + i.toString()"
+                                               value= "false">
                                         {{ answer }}
                                     </label>
                                 </div>
                             </li>
                         </ul>
-
                     </div>
                 </li>
             </ul>
+        </div>
+        <div class="w-100"></div>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#result" onclick="getResult();drawAnswers()">Вывести результат</button>
+    </div>
+</section>
+
+<section>
+    <div class="modal fade" id="result" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">Ваш резултат</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Вы ответили правильно на {{ correctAnswers }} из {{ countAnswers }} вопросов
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <footer>
 </footer>
-
 <script src="javascript/test.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

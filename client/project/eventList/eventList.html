@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EventList</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/eventList.css">
+</head>
+<body>
+<script src="https://unpkg.com/vue"></script>
+
+<header>
+</header>
+
+<section class="container" id="list">
+    <div class="row justify-content-center">
+        <div class="title col-10">Список дел</div>
+
+        <div id="sub" class="col-10 form-inline justify-content-between">
+            <input type="text" class="form-control col-8" v-model="title">
+            <button type="submit" class="btn btn-info col-3"
+                    v-on:click.prevent="onSubmit(), save()">Добавить</button>
+        </div>
+        <div class="w-100"></div>
+        <select v-model="filter" class="col-3 form-control">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="not-completed">Not Completed</option>
+        </select>
+        <div class="col-10">
+            <ul v-if="filteredList.length">
+                <li v-for="(event, i) in filteredList" class = "card mb-3">
+                    <div class="card-body col-12">
+                        <div class="custom-control custom-checkbox col-11">
+                            <input type="checkbox" class="custom-control-input"
+                                   v-bind:id=i
+                                   v-bind:checked="event.completed"
+                                   v-on:change="event.completed = !event.completed, save()">
+                            <label class="custom-control-label w-100"
+                                   v-bind:for=i
+                                   v-bind:class="{done: event.completed}">
+                                {{ event.title }}</label>
+
+<!--                            <input type="checkbox" class=""-->
+<!--                                   v-bind:id=i v-bind:checked="event.completed"-->
+<!--                                   v-on:change="event.completed = !event.completed, save()">-->
+<!--                            <label class=" w-100" v-bind:for=i v-bind:class="{done: event.completed}">-->
+<!--                                {{ event.title }}</label>-->
+
+
+                        </div>
+                        <button type="button" class="close col-1" v-on:click="removeEvent(event)">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            <div v-else>Нет записей</div>
+        </div>
+    </div>
+</section>
+
+<footer>
+</footer>
+<script src="javascript/eventList.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommend</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/recommend.css">
+</head>
+<body>
+<script src="https://unpkg.com/vue"></script>
+
+<header>
+</header>
+
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="title col-12">Рекомендательная система для повышения продуктивности</div>
+        <div class="form col-10">
+            <ul>
+                <li class = "card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Сколько времени вы проводите перед экраном?</h5>
+                        <input id="phoneTime" type="number" class="form-control" onclick="clearRed(this)" onchange="clearRed(this)">
+                    </div>
+                </li>
+                <li class = "card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">У вас есть список текущих дел?</h5>
+                        <select id="listWork" class="form-control" onchange="clearRed(this)">
+                            <option></option>
+                            <option>Да, есть</option>
+                            <option>Нет, нету</option>
+                        </select>
+                    </div>
+                </li>
+                <li class = "card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Умеете ли вы говорить «нет»?</h5>
+                        <select id="sayNo" class="form-control" onchange="clearRed(this)">
+                            <option></option>
+                            <option>Да, умею</option>
+                            <option>Нет, не умею</option>
+                        </select>
+                    </div>
+                </li>
+                <li class = "card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title"> Можете ли вы обратиться за помощью?</h5>
+                        <select id="askedHelp" class="form-control" onchange="clearRed(this)">
+                            <option></option>
+                            <option>Да, могу</option>
+                            <option>Нет, не могу</option>
+                        </select>
+                    </div>
+                </li>
+                <li class = "card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title"> Вы заботитесь о себе?</h5>
+                        <select id="careY" class="form-control" onchange="clearRed(this)">
+                            <option></option>
+                            <option>Да, забочусь</option>
+                            <option>Нет, не забочусь</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="w-100"></div>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#resultRec" onclick="checkRec()">
+            Получить рекомендацию</button>
+    </div>
+</section>
+
+<section>
+    <div class="modal fade bd-example-modal-lg" id="resultRec" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">Рекомендации</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div v-for="tex in recText" class="modal-body">
+                    {{ tex }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+</footer>
+<script src="javascript/recommend.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
